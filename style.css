@@ -12,28 +12,41 @@ header{
     box-sizing: border-box;
     background-color: #808000;
 }
+/* 
+    I used the smallest resolution as a default media queries
+    because it is considered the most commonly used
+    In media queries it is overwritten
+*/
 main{
+    position: relative;
     width: 100%;
     height: calc(100vh - 70px);
     box-sizing: border-box;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
     background-color: #008000;
     border: 4px solid black;
     border-top: none;
+    display: grid;
+    grid-template-areas: 
+        "squares"
+        "figures"
+        "aside"
+    ;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
 }
 .squares{
     position: relative;
+    grid-area: squares;
+    
 }
 .squares-item:nth-child(1){
     position: absolute;
-    top: 25px;
+    top: 23px;
     left: 130px;
 }
 .squares-item:nth-child(2){
     position: absolute;
-    top: 125px;
+    top: 123px;
     left: 30px;
 }
 .squares-item{
@@ -41,20 +54,19 @@ main{
     height: 100px;
     background-color: #ff0000;
     border: 2px solid black;
-    rotate: 45deg;
+    transform: rotate(45deg);
 }
 .figures{
     margin-top: 80px;
     display: flex;
     flex-direction: row;
     align-items: center;
+    grid-area: figures;
 }
-
 .figures-rectangle{
     display: flex;
     flex-direction: column;
 }
-
 .figures__rectangle-item{
     width: 130px;
     height: 10px;
@@ -70,14 +82,62 @@ main{
     border: 4px solid black;
 }
 aside{
+    position: absolute;
+    top: 40px;
+    right: 20px;
     width: 200px;
     height: 500px;
     background-color: #ffffff;
     border: 4px solid black;
     text-align: center;
-    margin: 40px 30px 0 0;
+    grid-area: aside;
 }
 aside h1{
     font-size: 40px;
     padding: 30px;
+} 
+
+
+@media (max-width: 582px){
+    main{
+        display: grid;
+        grid-template-areas: 
+            "squares"
+            "figures"
+            "aside"
+        ;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+    }
+    aside{
+        background-color: #0000ff;
+    }
 }
+
+@media (min-width: 583px ) and (max-width: 900px){
+    main{
+        display: grid;
+        grid-template-areas:
+            "squares aside"
+            "figures aside"
+        ;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+    }
+    aside{
+        background-color: #c73636;
+    }
+    .figures{
+        margin-top: 0px;
+    }
+}
+
+
+@media (min-width: 901px){
+    main{
+        display: grid;
+        grid-template-areas: "squares figures aside";
+        grid-template-columns: 1fr 1fr 1fr; 
+    }
+}
+   
