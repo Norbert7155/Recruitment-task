@@ -2,8 +2,9 @@
     margin: 0;
     padding: 0;
 }
-body{
-    height: 100vh;
+html , body{
+    height: 100vh;      /* full viewport height */
+    overflow: hidden;   /* fisable scrolling */
 }
 header{
     width: 100%;
@@ -18,9 +19,8 @@ header{
     In media queries it is overwritten
 */
 main{
-    position: relative;
     width: 100%;
-    height: calc(100vh - 70px);
+    height: calc(100vh - 70px); /* main height calculation */
     box-sizing: border-box;
     background-color: #008000;
     border: 4px solid black;
@@ -32,18 +32,21 @@ main{
         "aside"
     ;
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: 1fr 1fr 1fr; /* divides equally space */
 }
 .squares{
     position: relative;
     grid-area: squares;
-    
+    min-width: 100px;
+    min-height: 100px;
 }
+/*Position the first red square*/
 .squares-item:nth-child(1){
     position: absolute;
     top: 23px;
     left: 130px;
 }
+/*Position the second red square*/
 .squares-item:nth-child(2){
     position: absolute;
     top: 123px;
@@ -57,17 +60,17 @@ main{
     transform: rotate(45deg);
 }
 .figures{
-    margin-top: 80px;
+    padding-top: 60px;
     display: flex;
     flex-direction: row;
     align-items: center;
     grid-area: figures;
 }
-.figures-rectangle{
+.figures-rectangles{
     display: flex;
     flex-direction: column;
 }
-.figures__rectangle-item{
+.figures__rectangles-item{
     width: 130px;
     height: 10px;
     background-color: #0000ff;
@@ -82,41 +85,90 @@ main{
     border: 4px solid black;
 }
 aside{
+    position: relative;
+    grid-area: aside;
+}
+article{
     position: absolute;
-    top: 40px;
+    top:30px;
     right: 20px;
     width: 200px;
-    height: 500px;
+    height: 650px;
     background-color: #ffffff;
     border: 4px solid black;
     text-align: center;
-    grid-area: aside;
 }
-aside h1{
+article h1{
     font-size: 40px;
     padding: 30px;
 } 
 
 
+/* --- MEDIA QUERIES --- */
+
+/* 
+  Small screens max-width: 582px
+    - Change header height
+    - Recalculate main height
+    - Change grid row sizes
+    - Resize squares and figures
+*/
 @media (max-width: 582px){
     main{
-        display: grid;
+        height: calc(100vh - 30px);
         grid-template-areas: 
             "squares"
             "figures"
             "aside"
         ;
         grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto;
+        grid-template-rows: 200px 110px auto;
+        
     }
-    aside{
+    article{
         background-color: #0000ff;
+        top:0px;
+        left: 30px;
+        height: 450px;
     }
+    header{
+        height: 30px;
+    }
+    .squares-item{
+        width: 80px;
+        height: 80px;
+    }
+    .squares-item:nth-child(1){
+        top: 25px;
+        left: 100px;
+    }
+    .squares-item:nth-child(2){
+        top: 105px;
+        left: 20px;
+    }
+    .figures{
+        padding-top: 0px;
+    }
+    .figures__rectangles-item{
+        width: 90px;
+        height: 8px;
+        margin: 10px;
+    }
+    .figures-circle{
+        height: 80px;
+        width: 80px;
+    }
+
 }
 
+
+/* 
+  Medium screens 583px to 900px
+    - Change grid into two columns
+    - change article background color
+*/
 @media (min-width: 583px ) and (max-width: 900px){
     main{
-        display: grid;
         grid-template-areas:
             "squares aside"
             "figures aside"
@@ -124,20 +176,27 @@ aside h1{
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto auto;
     }
-    aside{
+    article{
         background-color: #c73636;
     }
     .figures{
-        margin-top: 0px;
+        padding-top: 0px;
     }
 }
 
 
+/* 
+  Large screens, min-width: 901px
+    -layout with three columns
+*/
 @media (min-width: 901px){
     main{
-        display: grid;
         grid-template-areas: "squares figures aside";
         grid-template-columns: 1fr 1fr 1fr; 
     }
-}
+} 
+
+
+
+
    

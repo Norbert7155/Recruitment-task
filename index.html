@@ -10,23 +10,26 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- I used HTML5 semantic elements header/main/aside -->
+    <!-- I used HTML5 semantic elements header/main/aside/section/article -->
     <header></header>
     <main>
         <!-- I used the BEM methodology to name the classes -->
-        <div class="squares">
+        <section class="squares">
             <div class="squares-item"></div>
             <div class="squares-item"></div>
-        </div>
-        <div class="figures">
-            <div class="figures-rectangle">
-                <div class="figures__rectangle-item"></div>
-                <div class="figures__rectangle-item"></div>
+        </section>
+        <section class="figures">
+            <div class="figures-rectangles">
+                <div class="figures__rectangles-item"></div>
+                <div class="figures__rectangles-item"></div>
             </div>
             <div class="figures-circle"></div>
-        </div>
+        </section>
         <aside>
-            <h1>ABC</h1>
+            <!-- instead of article you can use for example nav depending on the purpose of the component -->
+            <article>
+                <h1>ABC</h1>
+            </article>
         </aside>
     </main>
 </body>
