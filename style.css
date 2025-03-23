@@ -56,6 +56,7 @@ main{
     background-color: #ff0000;
     border: 2px solid black;
     transform: rotate(45deg);
+    animation: rotate 2s infinite ease-in-out;
 }
 .figures{
     padding-top: 120px;
@@ -82,6 +83,7 @@ main{
     border-radius: 50%;
     background-color: #008080;
     border: 4px solid black;
+    animation: circleRotate 3s infinite ease-in-out;
 }
 aside{
     display: flex;
@@ -199,5 +201,37 @@ article h1{
     }
     article{
         background-color: #ffffff;
+    }
+}
+
+
+/* --- Animations --- */
+@keyframes rotate{
+    0% {
+        transform: rotate(45deg);
+    }
+    25% {
+        transform: rotate(35deg);
+    }
+    50% {
+        transform: rotate(45deg);
+    }
+    75% {
+        transform: rotate(55deg);
+    }
+    100%{
+        transform: rotate(45deg);
+    }
+}
+
+@keyframes circleRotate {
+    0% {
+      transform: scale(1);
+    }
+    50%{
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
     }
 }
