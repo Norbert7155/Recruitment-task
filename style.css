@@ -4,7 +4,7 @@
 }
 html , body{
     height: 100vh;      /* full viewport height */
-    overflow: hidden;   /* fisable scrolling */
+    overflow: hidden;   /* disable scrolling */
 }
 header{
     width: 100%;
@@ -32,7 +32,7 @@ main{
         "aside"
     ;
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto 1fr; /* divides equally space */
+    grid-template-rows: auto auto 1fr;
 }
 .squares{
     position: relative;
@@ -61,7 +61,7 @@ main{
     padding-top: 120px;
     display: flex;
     flex-direction: row;
-    align-items: start;
+    align-items: flex-start;
     justify-content: center;
     grid-area: figures;
 }
@@ -87,7 +87,7 @@ aside{
     display: flex;
     grid-area: aside;
     flex-direction: column; 
-    align-items: end;         
+    align-items: flex-end;         
     padding: 0 20px;            
 }
 article{
@@ -126,7 +126,7 @@ article h1{
         grid-template-rows: 200px 110px auto;
     }
     aside{
-        align-items: start;  
+        align-items: flex-start;  
     }
     header{
         height: 30px;
@@ -184,7 +184,6 @@ article h1{
     }
 }
 
-
 /* 
   Large screens, min-width: 901px
     -layout with three columns
@@ -201,5 +200,4 @@ article h1{
     article{
         background-color: #ffffff;
     }
-} 
-
+}
